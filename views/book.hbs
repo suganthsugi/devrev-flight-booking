@@ -1,0 +1,299 @@
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js"
+        integrity="sha384-IQsoLXl5PILFhosVNubq5LC7Qb9DXgDA9i+tQ8Zj3iwWAwPtgFTxbJ8NT4GN1R8p"
+        crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.min.js"
+        integrity="sha384-cVKIPhGWiC2Al4u+LWgxfKTRIcfu0JTxR+EQDz/bgldoEyl4H0zUF0QKbrJ0EcQF"
+        crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM"
+        crossorigin="anonymous"></script>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+    <style>
+        .plane {
+            border: 2px solid black;
+            padding: 20px;
+
+        }
+
+        .plane p {
+            border: 2px solid black;
+            background-color: white;
+        }
+
+    </style>
+</head>
+<body onload="fill()">
+   <p id="name1"> {{e}}</p>
+   <p>{{msg}}</p>
+   <p>{{fillseat}}</p> 
+   <p id="0" style="display:none">pp</p>
+    <div class="row">
+        <div class="col-md-3">
+            <div class="plane">
+                    <div class="row">
+                        <div class="col-md-2">
+                            <p id="a1" onclick="color('a1')" ondblclick="uncolor('a1')">A1</p>
+                        </div>
+                        <div class="col-md-2">
+                            <p id="a2" onclick="color('a2')"  ondblclick="uncolor('a2')">A2</p>
+                        </div>
+                        <div class="col-md-2">
+                            <p id="a3" onclick="color('a3')"  ondblclick="uncolor('a3')">A3</p>
+                        </div>
+                        <div class="col-md-2">
+                            <p id="a4" style="float:right" onclick="color('a4')"  ondblclick="uncolor('a4')">A4</p>
+                        </div>
+                        <div class="col-md-2">
+                            <p id="a5" onclick="color('a5')"  ondblclick="uncolor('a5')">A5</p>
+                        </div>
+                        <div class="col-md-2">
+                            <p id="a6" onclick="color('a6')"  ondblclick="uncolor('a6')">A6</p>
+                        </div>
+                    </div>
+                    <div class="row">
+                         <div class="col-md-2">
+                            <p id="b1" onclick="color('b1')"  ondblclick="uncolor('b1')">B1</p>
+                        </div>
+                        <div class="col-md-2">
+                            <p id="b2" onclick="color('b2')"  ondblclick="uncolor('b2')">B2</p>
+                        </div>
+                        <div class="col-md-2">
+                            <p id="b3" onclick="color('b3')"  ondblclick="uncolor('b3')">B3</p>
+                        </div>
+                        <div class="col-md-2">
+                            <p id="b4" style="float:right" onclick="color('b4')"  ondblclick="uncolor('b4')">B4</p>
+                        </div>
+                        <div class="col-md-2">
+                            <p id="b5" onclick="color('b5')"  ondblclick="uncolor('b5')">B5</p>
+                        </div>
+                        <div class="col-md-2">
+                            <p id="b6" onclick="color('b6')"  ondblclick="uncolor('b6')">B6</p>
+                        </div>      
+                    </div>
+                    <div class="row">
+                         <div class="col-md-2">
+                            <p id="c1" onclick="color('c1')"  ondblclick="uncolor('c1')">C1</p>
+                        </div>
+                        <div class="col-md-2">
+                            <p id="c2" onclick="color('c2')"  ondblclick="uncolor('c2')">C2</p>
+                        </div>
+                        <div class="col-md-2">
+                            <p id="c3" onclick="color('c3')"  ondblclick="uncolor('c3')">C3</p>
+                        </div>
+                        <div class="col-md-2">
+                            <p id="c4" style="float:right" onclick="color('c4')"  ondblclick="uncolor('c4')">C4</p>
+                        </div>
+                        <div class="col-md-2">
+                            <p id="c5" onclick="color('c5')"  ondblclick="uncolor('c5')">C5</p>
+                        </div>
+                        <div class="col-md-2">
+                            <p id="c6" onclick="color('c6')"  ondblclick="uncolor('c6')">C6</p>
+                        </div>      
+                    </div><div class="row">
+                         <div class="col-md-2">
+                            <p id="d1" onclick="color('d1')"  ondblclick="uncolor('d1')">D1</p>
+                        </div>
+                        <div class="col-md-2">
+                            <p id="d2" onclick="color('d2')"  ondblclick="uncolor('d2')">D2</p>
+                        </div>
+                        <div class="col-md-2">
+                            <p id="D3" onclick="color('D3')"  ondblclick="uncolor('D3')">D3</p>
+                        </div>
+                        <div class="col-md-2">
+                            <p id="D4" style="float:right" onclick="color('D4')"  ondblclick="uncolor('D4')">D4</p>
+                        </div>
+                        <div class="col-md-2">
+                            <p id="D5" onclick="color('D5')"  ondblclick="uncolor('D5')">D5</p>
+                        </div>
+                        <div class="col-md-2">
+                            <p id="D6" onclick="color('D6')"  ondblclick="uncolor('D6')">D6</p>
+                        </div>      
+                    </div><div class="row">
+                         <div class="col-md-2">
+                            <p id="E1" onclick="color('E1')"  ondblclick="uncolor('E1')">E1</p>
+                        </div>
+                        <div class="col-md-2">
+                            <p id="E2" onclick="color('E2')"  ondblclick="uncolor('E2')">E2</p>
+                        </div>
+                        <div class="col-md-2">
+                            <p id="F3" onclick="color('F3')"  ondblclick="uncolor('F3')">F3</p>
+                        </div>
+                        <div class="col-md-2">
+                            <p id="F4" style="float:right" onclick="color('F4')"  ondblclick="uncolor('F4')">F4</p>
+                        </div>
+                        <div class="col-md-2">
+                            <p id="F5" onclick="color('F5')"  ondblclick="uncolor('F5')">F5</p>
+                        </div>
+                        <div class="col-md-2">
+                            <p id="F6" onclick="color('F6')"  ondblclick="uncolor('F6')">F6</p>
+                        </div>      
+                    </div>
+                    <div class="row">
+                         <div class="col-md-2">
+                            <p id="G1" onclick="color('G1')"  ondblclick="uncolor('G1')">G1</p>
+                        </div>
+                        <div class="col-md-2">
+                            <p id="G2" onclick="color('G2')"  ondblclick="uncolor('G2')">G2</p>
+                        </div>
+                        <div class="col-md-2">
+                            <p id="G3" onclick="color('G3')"  ondblclick="uncolor('G3')">G3</p>
+                        </div>
+                        <div class="col-md-2">
+                            <p id="G4" style="float:right" onclick="color('G4')"  ondblclick="uncolor('G4')">G4</p>
+                        </div>
+                        <div class="col-md-2">
+                            <p id="G5" onclick="color('G5')"  ondblclick="uncolor('G5')">G5</p>
+                        </div>
+                        <div class="col-md-2">
+                            <p id="G6" onclick="color('G6')"  ondblclick="uncolor('G6')">G6</p>
+                        </div>      
+                    </div>
+                    <div class="row">
+                         <div class="col-md-2">
+                            <p id="H1" onclick="color('H1')"  ondblclick="uncolor('H1')">H1</p>
+                        </div>
+                        <div class="col-md-2">
+                            <p id="H2" onclick="color('H2')"  ondblclick="uncolor('H2')">H2</p>
+                        </div>
+                        <div class="col-md-2">
+                            <p id="H3" onclick="color('H3')"  ondblclick="uncolor('H3')">H3</p>
+                        </div>
+                        <div class="col-md-2">
+                            <p id="H4" style="float:right" onclick="color('H4')"  ondblclick="uncolor('H4')">H4</p>
+                        </div>
+                        <div class="col-md-2">
+                            <p id="H5" onclick="color('H5')"  ondblclick="uncolor('H5')">H5</p>
+                        </div>
+                        <div class="col-md-2">
+                            <p id="H6" onclick="color('H6')"  ondblclick="uncolor('H6')">H6</p>
+                        </div>      
+                    </div><div class="row">
+                         <div class="col-md-2">
+                            <p id="I1" onclick="color('I1')"  ondblclick="uncolor('I1')">I1</p>
+                        </div>
+                        <div class="col-md-2">
+                            <p id="I2" onclick="color('I2')"  ondblclick="uncolor('I2')">I2</p>
+                        </div>
+                        <div class="col-md-2">
+                            <p id="I3" onclick="color('I3')"  ondblclick="uncolor('I3')">I3</p>
+                        </div>
+                        <div class="col-md-2">
+                            <p id="I4" style="float:right" onclick="color('I4')"  ondblclick="uncolor('I4')">I4</p>
+                        </div>
+                        <div class="col-md-2">
+                            <p id="I5" onclick="color('I5')"  ondblclick="uncolor('I5')">I5</p>
+                        </div>
+                        <div class="col-md-2">
+                            <p id="I6" onclick="color('I6')"  ondblclick="uncolor('I6')">I6</p>
+                        </div>      
+                    </div><div class="row">
+                         <div class="col-md-2">
+                            <p id="J1" onclick="color('J1')"  ondblclick="uncolor('J1')">J1</p>
+                        </div>
+                        <div class="col-md-2">
+                            <p id="J2" onclick="color('J2')"  ondblclick="uncolor('J2')">J2</p>
+                        </div>
+                        <div class="col-md-2">
+                            <p id="J3" onclick="color('J3')"  ondblclick="uncolor('J3')">J3</p>
+                        </div>
+                        <div class="col-md-2">
+                            <p id="J4" style="float:right" onclick="color('J4')"  ondblclick="uncolor('J4')">J4</p>
+                        </div>
+                        <div class="col-md-2">
+                            <p id="J5" onclick="color('J5')"  ondblclick="uncolor('J5')">J5</p>
+                        </div>
+                        <div class="col-md-2">
+                            <p id="J6" onclick="color('J6')"  ondblclick="uncolor('J6')">J6</p>
+                        </div>      
+                    </div>
+                
+            </div>
+        </div>
+        <div class="col-md-4">
+       <button id="poj" onclick="submit()">Book Tickets</button>
+        </div>
+        <div class="col-md-4">
+         <a href="/login"><button >login</button></a>
+        </div>
+    </div>
+</body>
+<script>
+    let l=[]
+    function color(e){
+        document.getElementById(e).style.backgroundColor='yellow';
+        l.push(e);
+    }
+    function uncolor(e){
+        document.getElementById(e).style.backgroundColor='white';
+        for(var i=0;i<l.length;i++){
+            if(l[i].localeCompare(e)==0)
+                l[i]='0';  
+        }
+       // l.remove(e);
+    }
+    function po(){
+    console.log(l);
+    }
+    function submit(e){
+           const name=document.getElementById('name1').innerHTML;
+           console.log(name);
+           var seatno='';
+           var arr=new Set(l);
+           console.log(arr);   
+           arr=Array.from(arr); 
+           for(var i=0;i<arr.length;i++){
+            seatno+=arr[i]+'.';
+           }
+           console.log(name);
+           console.log(seatno);
+             var url = window.location.href;
+
+     console.log("Current URL: " + url);
+      
+    
+      var queryString = window.location.search;
+      var urlParams = new URLSearchParams(queryString);
+      var p = urlParams.get("fillseat");
+      var yp=urlParams.get("id");
+      console.log(yp);
+      window.location.href=`http://localhost:7000/fillseat?name=${name}&fillseat=${seatno}&id=${yp}`;
+    }
+function fill(){
+
+    var url = window.location.href;
+
+     console.log("Current URL: " + url);
+      
+      // Parse a query string parameter
+      var queryString = window.location.search;
+      var urlParams = new URLSearchParams(queryString);
+      var p = urlParams.get("fillseat");
+      console.log("Query parameter value: " + urlParams);
+      console.log('tk'+p);
+      var yp=urlParams.get("id");
+      if(yp.localeCompare("]")==0){
+         document.getElementById('poj').style.display="none";
+      }
+      var t=p.split('f');
+      t=new Set(t);
+      t=Array.from(t);
+     console.log(t);
+     for(var i=0;i<t.length-1;i++){
+     document.getElementById(t[i]).style.backgroundColor='red';
+    document.getElementById(t[i]).setAttribute('disabled','');
+    document.getElementById(t[i]).removeAttribute("onclick");
+    document.getElementById(t[i]).removeAttribute("ondblclick");
+    document.getElementById(t[i]).style.color='white';
+     }
+} 
+
+</script>
+</html>

@@ -1,0 +1,243 @@
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+     <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js"
+        integrity="sha384-IQsoLXl5PILFhosVNubq5LC7Qb9DXgDA9i+tQ8Zj3iwWAwPtgFTxbJ8NT4GN1R8p"
+        crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.min.js"
+        integrity="sha384-cVKIPhGWiC2Al4u+LWgxfKTRIcfu0JTxR+EQDz/bgldoEyl4H0zUF0QKbrJ0EcQF"
+        crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM"
+        crossorigin="anonymous"></script>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+    <style>
+        body{
+            border:20px solid #3a3a3a;
+        }
+        #top{
+ 
+  margin: 0;
+  font-family: Arial, Helvetica, sans-serif;
+  color:white;
+  justify-items: center;
+  align-items: center;
+  background-color: #3a3a3a;
+        }
+    </style>
+</head>
+
+<body onload="fix()">
+    <p id="non" style="display:none">{{l}}</p>
+   <p id="qw" style="display:none"></p>
+   <p id="ok" style="display:none">{{name}}</p>
+   <p id="email" style="display:none">{{email}}</p>
+   <div class="row" id="top">
+   <div class="col-md-3">
+   <p id="dear">Dear {{name}}</p>
+   </div>
+   <div class="col-md-3">
+
+   </div>
+   <div class="col-md-3">
+    <button id="booking" style="border-radius: 30px;float:right;background-color:"onclick="book()">My Bookings</button>
+   </div>
+   <div class="col-md-3">
+    <a href="/login"><button id="login" style="border-radius: 30px;float:right">Login</button></a>
+    <a href="/search "><button id="logout" style="border-radius: 30px;float:right">Logout</button></a>
+   </div>
+   </div>
+   <p style="display:none">{{email}}</p>
+   <br><br><br>
+    <label for="">Date</label>
+    <input type="date" name="date" id="date">
+    <label for="">Time</label>
+    <input type="text" name="time" id="time">
+ 
+    <button onclick="search1()">Search Flights</button>
+       <br>
+    <br>
+    <div id="search" style="margin-left: 6%;">
+          <table >
+            <tr>
+                <th style="width:150px">FlightName</th>
+                <th style="width:150px">Time</th>
+                <th style="width:150px">From</th>
+                <th style="width:150px">To</th>
+                <th style="width:150px">Duration</th>
+                <th style="width:150px">stop</th>
+                <th style="width:150px">Destination Time</th>
+                <th style="width:150px">price</th>
+            </tr>
+        </table>
+        <br><br>
+        <table id="mytable">
+           
+        </table>
+    </div>
+</body>
+<script>
+    function search1() {
+        const y = document.getElementById('date').value;
+        const y1 = document.getElementById('time').value;
+         document.getElementById('mytable').innerHTML='';
+        fetch('search', {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify({ date: y, time: y1 })
+        }).then(res => res.json()).then(data => {
+            const y = document.getElementById('search')
+            for (var i = 0; i < data.val.length; i++) {
+                const spl= data.val[i].split(',');
+                const p = document.createElement('tr');
+                const br=document.createElement('tr');
+                document.getElementById('mytable').appendChild(br);
+               // document.getElementById('mytable').appendChild(p);
+                const td1 = document.createElement('td');
+                td1.setAttribute('style','width:150px');
+                td1.innerHTML = spl[0];
+                const td2 = document.createElement('td');
+                td2.innerHTML = spl[2];
+                td2.setAttribute('style','width:150px');
+                const td3 = document.createElement('td');
+                td3.innerHTML = spl[3];
+                td3.setAttribute('style','width:150px');
+                const td4 = document.createElement('td');
+                td4.innerHTML = spl[4];
+                td4.setAttribute('style','width:150px');
+                const td5 = document.createElement('td');
+                td5.setAttribute('style','width:150px');
+                td5.innerHTML = spl[5]+'hrs'; 
+                const td6 = document.createElement('td');
+                td6.innerHTML = spl[6];
+                td6.setAttribute('style','width:150px');
+                const td7=document.createElement('td');
+                td7.innerHTML=spl[7];
+                td7.setAttribute('style','width:150px');
+                const td8=document.createElement('td');
+                td8.innerHTML=spl[8];
+                td8.setAttribute('style','width:150px');
+              
+                p.appendChild(td1);
+                p.appendChild(td2);
+                p.appendChild(td3);
+                p.appendChild(td4);
+                p.appendChild(td5);
+                p.appendChild(td6);
+                p.appendChild(td7);
+                p.appendChild(td8);
+              //  p.appendChild(td9);
+                console.log(y);    
+                
+                 var pl=spl[1]+spl[2];
+                 console.log(pl);
+                 const yl=document.getElementsByClassName('book').length;
+                 const butt=document.createElement('button');
+                p.innerHTML+=`<button class="book" value=${spl[0]+pl} onclick=change(${yl}) style="color:margin-top:20px">Book</button>`
+                p.setAttribute('style','padding:30px; height:60px;box-shadow: 5px 10px 8px 10px #888888;');
+             
+                document.getElementById('mytable').appendChild(p);
+               // const br=document.createElement('tr');
+                
+            }
+        })
+    }
+
+async function  change(e){
+    const r=document.getElementsByClassName('book');
+    console.log(r[e].value);
+    var fillseat='';
+     await fetch('seatno',{
+        method:'POST',
+        headers:{ 'Content-Type': 'application/json'},
+        body:JSON.stringify({time:r[e].value})
+        }).then(res=>res.json()).then(data=>{
+           document.getElementById('qw').innerText=data.fillseat;
+            console.log(document.getElementById('qw'));
+        })      
+        console.log(document.getElementById('qw'));
+       y=document.getElementById('qw').innerHTML;
+       console.log('api'+y);
+       const name=document.getElementById('ok').innerHTML;
+       const email=document.getElementById('email').innerHTML;
+       const id=name+']'+email;
+  window.location.href = `http://localhost:7000/bookseat?e=${r[e].value}&fillseat=${y}&id=${id}`
+   }
+
+   function fix(){
+    const r=document.getElementById('ok').innerText;
+    const ab=document.getElementById('non').innerHTML;
+    if(r.localeCompare('')==0){
+       document.getElementById('dear').innerHTML='';
+       document.getElementById('booking').style.display='none';
+       document.getElementById('logout').style.display='none';
+    } 
+    else{
+        document.getElementById('login').style.display='none';
+    }
+    const bc=ab.split(']');
+     for (var i = 0; i < bc.length-1; i++) {
+                const spl= bc[i].split(',');
+                const p = document.createElement('tr');
+                const br=document.createElement('tr');
+                document.getElementById('mytable').appendChild(br);
+               // document.getElementById('mytable').appendChild(p);
+                const td1 = document.createElement('td');
+                td1.setAttribute('style','width:150px');
+                td1.innerHTML = spl[0];
+                const td2 = document.createElement('td');
+                td2.innerHTML = spl[2];
+                td2.setAttribute('style','width:150px');
+                const td3 = document.createElement('td');
+                td3.innerHTML = spl[3];
+                td3.setAttribute('style','width:150px');
+                const td4 = document.createElement('td');
+                td4.innerHTML = spl[4];
+                td4.setAttribute('style','width:150px');
+                const td5 = document.createElement('td');
+                td5.setAttribute('style','width:150px');
+                td5.innerHTML = spl[5]+'hrs'; 
+                const td6 = document.createElement('td');
+                td6.innerHTML = spl[6];
+                td6.setAttribute('style','width:150px');
+                const td7=document.createElement('td');
+                td7.innerHTML=spl[7];
+                td7.setAttribute('style','width:150px');
+                const td8=document.createElement('td');
+                td8.innerHTML=spl[8];
+                td8.setAttribute('style','width:150px');
+                p.appendChild(td1);
+                p.appendChild(td2);
+                p.appendChild(td3);
+                p.appendChild(td4);
+                p.appendChild(td5);
+                p.appendChild(td6);
+                p.appendChild(td7);
+                p.appendChild(td8);
+              //  p.appendChild(td9);
+            
+                 var pl=spl[1]+spl[2];
+                 console.log(pl +'oggy');
+                 const yl=document.getElementsByClassName('book').length;
+                 const butt=document.createElement('button');
+                p.innerHTML+=`<button class="book" value=${spl[0]+pl} onclick=change(${yl}) style="color:margin-top:20px">Book</button>`
+                p.setAttribute('style','padding:30px; height:60px;box-shadow: 5px 10px 8px 10px #888888;');
+             
+                document.getElementById('mytable').appendChild(p);
+   }
+   }
+   function book(){
+        const name=document.getElementById('ok').innerHTML;
+        const email=document.getElementById('email').innerHTML;
+        const r=name+'['+email;
+        window.location.href=`http://localhost:7000/mybook?id=${r}`;
+   }
+   
+</script>
+
+</html>

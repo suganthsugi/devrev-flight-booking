@@ -1,0 +1,57 @@
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body onload="fill()">
+    <h1>Your Last Bookings</h1>
+    <div class="th">
+        <table >
+            <tr>
+                <th style="width:200px">FlightName</th>
+                <th style="width:200px">From</th>
+                <th style="width:200px">To</th>
+                <th style="width:200px">Total Seats</th>
+            </tr>
+        </table>
+        <table id="push">
+
+        </table>
+    </div>
+           <p id="name" style="display: none;"> {{name}}</p>
+            <p id="from" style="display: none;">{{from}}</p>
+            <p id="to" style="display: none;">{{to}}</p>
+            <p id="seat" style="display: none;">{{seat}}</p>
+</body>
+<script>
+function fill(){
+      var a=document.getElementById('name').innerHTML.split('.');
+      var b=document.getElementById('from').innerHTML.split('.');
+      var c=document.getElementById('to').innerHTML.split('.');
+      var d=document.getElementById('seat').innerHTML.split('.');
+      for(var i=0;i<a.length;i++){
+             const tr=document.createElement('tr');
+             const td1=document.createElement('td');
+             td1.innerHTML=`${a[i]}`;
+             td1.setAttribute('style','width:200px;text-align:center');
+             tr.appendChild(td1);
+             const td2=document.createElement('td');
+             td2.innerHTML=`${b[i]}`;
+             td2.setAttribute('style','width:200px;text-align:center');
+             tr.appendChild(td2);
+             const td3=document.createElement('td');
+             td3.innerHTML=`${c[i]}`;
+             td3.setAttribute('style','width:200px;text-align:center');
+             tr.appendChild(td3);
+             const td4=document.createElement('td');
+             td4.innerHTML=`${d[i]}`;
+             td4.setAttribute('style','width:200px;text-align:center');
+             tr.appendChild(td4);
+             document.getElementById('push').appendChild(tr);
+      }
+}
+</script>
+
+</html>

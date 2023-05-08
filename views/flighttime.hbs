@@ -1,0 +1,351 @@
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+   <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js"
+        integrity="sha384-IQsoLXl5PILFhosVNubq5LC7Qb9DXgDA9i+tQ8Zj3iwWAwPtgFTxbJ8NT4GN1R8p"
+        crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.min.js"
+        integrity="sha384-cVKIPhGWiC2Al4u+LWgxfKTRIcfu0JTxR+EQDz/bgldoEyl4H0zUF0QKbrJ0EcQF"
+        crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM"
+        crossorigin="anonymous"></script>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+    <style>
+      #card {
+        position: relative;
+        top: 30%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        width: 700px;
+        height: 400px;
+        background-color: #f2f2f2;
+        padding: 20px;
+      }
+      #card1{
+        position: relative;
+        top:30%;
+        left: 30%;
+        transform: translate(-50%, -50%);
+        width: 600px;
+        height: 400px;
+        background-color: #f2f2f2;
+        padding: 20px;
+      }
+      #card2{
+        position: absolute;
+        top:100%;
+        left: 80%;
+        transform: translate(-50%, -50%);
+        width: 600px;
+        height: 400px;
+        background-color: #f2f2f2;
+        padding: 20px;
+      }
+    </style>
+</head>
+
+<body>
+  <p id="display:none">{{l}}</p>
+  <div class="iv" id="card">
+    <h1>add a flight</h1>
+
+    <form action="/addflight" method="post">
+    <div class="row">
+      <div class="col-md-4">
+      <label for="">Flight Id</label>
+      <input type="text" name="id" id="id" onblur="nameop()"required>
+      </div>
+      <div class="col-md-4">
+      <label for="">Flight Name</label>
+      <input type="text" name="name" class="poil"required>
+      </div>
+      <div class="col-md-4">
+      <label for="">Date</label>
+      <input type="date" name="date" id="date" required>
+      </div>
+      </div>
+      <br>
+      <div class="row">
+        <div class="col-md-4">
+      <label for="">Timings</label>
+      <input type="text" name="timings" id="time" onblur="checktime()" required>
+      </div>
+      <div class="col-md-4">
+      <label for="" onclick="put()">From</label>
+      <input type="text" name="from" id="from" onfocus="put()"required>
+      </div>
+      <div class="col-md-4">
+      <label for="">To</label>
+      <input type="text" name="to" required>
+      </div>
+      </div>
+      <br>
+      <div class="row" >
+        <div class="col-md-4">
+      <label for="">Price</label>
+      <input type="text" name="price">
+      </div>
+      <div class="col-md-4">
+      <label for="">Duration</label>
+      <input type="text" name="duration">
+      </div>
+      <div class="col-md-4">
+      <label for="">Stops</label>
+      <input type="number" name="stop">
+      </div>
+      </div>
+      <br>
+      <div class="row">
+        <div class="col-md-4">
+      <label for="">Destination Date</label>
+      <input type="date" name="endd">
+      </div>
+      <div class="col-md-4">
+      <label for="">Destination Time</label>
+      <input type="text" name="end">
+      </div>
+      <br>
+</div>
+      <input type="submit">
+    </form>
+  </div>
+  <br>
+  <br>
+  <div class="check" id="card1">
+    <h1>Check a Seat</h1>
+
+    <label for="id">Enter a Flight id to check</label>
+    <input type="text" id="fl" onblur="search()">
+    <br>
+    <label for="">Enter a Date to check the flight</label>
+    <input type="date" id="ig">
+    <br>
+    
+    <input type="text">
+    <div id="time">
+      <table>
+        <tr>
+           <th style="width:100px">Flight id</th>
+          <th  style="width:300px">Flight Name</th>
+          <th  style="width:150px">From</th>
+          <th  style="width:150px">To</th>
+          <th   style="width:150px">Date</th>
+          <th    style="width:150px">Time</th>
+          <th  style="width:150px">Booked seats</th>
+        </tr>
+      </table>
+      <table id="push">
+        
+      </table>
+    </div>
+  </div>
+  <div class="remove" id="card2">
+    <h1>remove a Flight</h1>
+    
+      <label for="">Flight id</label>
+      <input type="text" id="a4" onblur="search2()">
+      <br>
+      <label for="">Date</label>
+      <input type="date"  id="da">
+      <br>
+      <label for="" >Time</label>
+      <input type="text" id="ti">
+      <br>
+      <br>
+      <button onclick="update()">Remove</button>
+      <div id="display" style="display: none;">
+        <p>Refer and please fill the included time and Date
+          Once a flight is removed  remaining all the flight  which are after in removed date with same id are cancelled;
+        </p>
+        <table id="show">
+             <tr>
+              <th style="width:140px">Name</th>
+              <th style="width:140px">From</th>
+              <th style="width:140px">To</th>
+              <th style="width:140px">Date</th>
+              <th style="width:140px">Time</th>
+             </tr>
+        </table>
+      </div>
+    </form>
+  </div>
+  
+
+</body>
+<script>
+  function put() {
+    const u = document.getElementById("id").value;
+  
+    console.log('ppp');
+    fetch('from', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({ id: u })
+    }).then(res => res.json()).then(data => {
+      document.getElementById('from').value = data.id;
+    })
+  }
+  function checktime() {
+    const u = document.getElementById("id").value;
+
+    const p = document.getElementById('date').value;
+    const p1 = document.getElementById('time').value;
+    // const h=date2.getHours();
+    var lastdate = '';
+    fetch('time', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({ id: u })
+    }).then(res => res.json()).then(data => {
+      lastdate = data.date;
+      time = data.time;
+      if (lastdate.localeCompare(p) == 1) {
+        alert('last trip booked in ' + lastdate + time);
+      }
+      else if (lastdate.localeCompare(p) == 0) {
+        if (time.localeCompare(p1) == 1) {
+          alert('last trip booked in ' + lastdate + time);
+        }
+      }
+      else
+        console.log('equal');
+    })
+  }
+  function search(e) {
+    
+    const r = document.getElementById('fl').value;
+     document.getElementById('push').innerHTML='';
+    fetch('fk', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({ id: r })
+    }).then(res => res.json()).then(data => {
+      for (var i = 0; i < data.res.length; i++) {
+        var a = data.res[i].split(',');
+        const tr = document.createElement('tr');
+        const td = document.createElement('td');
+        td.innerHTML = `${r}`;
+         td.setAttribute('style','width:150px')
+        tr.appendChild(td);
+        const td1 = document.createElement('td');
+        td1.innerHTML = `${a[0]}`;
+        td1.setAttribute('style','width:150px')
+        tr.appendChild(td1);
+
+        const td2 = document.createElement('td');
+        td2.innerHTML = `${a[3]}`;
+          td2.setAttribute('style','width:150px')
+        tr.appendChild(td2);
+        const td3 = document.createElement('td');
+        td3.innerHTML = `${a[4]}`;
+          td3.setAttribute('style','width:150px')
+        tr.appendChild(td3);
+        const td6 = document.createElement('td');
+        td6.innerHTML = `${a[1]}`;
+          td6.setAttribute('style','width:150px')
+        tr.appendChild(td6);
+        const td4 = document.createElement('td');
+        td4.innerHTML = `${a[2]}`;
+          td4.setAttribute('style','width:150px')
+        tr.appendChild(td4);
+        const td5 = document.createElement('td');
+        td5.innerHTML = `${data.res1[i]}`;
+          td5.setAttribute('style','width:150px')
+        tr.appendChild(td5);
+        document.getElementById('push').appendChild(tr);
+      }
+    })
+  }
+
+  function  search2(){
+    const a=document.getElementById('a4').value;
+    console.log(a);
+    document.getElementById('display').style.display="block";
+     fetch('flightch',{
+        method:'POST',
+        headers:{ 'Content-Type': 'application/json'},
+        body:JSON.stringify({id:a})
+        }).then(res=>res.json()).then(data=>{
+           const y=data.rk;
+           for(var i=0;i<y.length;i++){
+            var sp=y[i].split(',');
+            const tr=document.createElement('tr');
+             const td=document.createElement('td');
+              td.innerHTML=`${sp[0]}`;
+              td.setAttribute('style','width:140px');
+              tr.appendChild(td);
+              const td1=document.createElement('td');
+              td1.innerHTML=`${sp[1]}`;
+                            td1.setAttribute('style','width:140px');
+
+              tr.appendChild(td1);
+              const td2=document.createElement('td');
+              td2.innerHTML=`${sp[2]}`;
+                            td2.setAttribute('style','width:140px');
+
+              tr.appendChild(td2);
+              const td3=document.createElement('td');
+                            td3.setAttribute('style','width:140px');
+
+              td3.innerHTML=`${sp[3]}`;
+              tr.appendChild(td3);
+              const td4=document.createElement('td');
+              td4.innerHTML=`${sp[44]}`;
+                            td4.setAttribute('style','width:140px');
+
+              tr.appendChild(td3);
+               const td5=document.createElement('td');
+              td5.innerHTML=`${sp[4]}`;
+                            td5.setAttribute('style','width:140px');
+
+              tr.appendChild(td5);
+              document.getElementById('show').appendChild(tr);
+           }
+        })    
+  }
+
+  function update(){
+      const p=document.getElementById('a4').value;
+      const p1=document.getElementById('da').value;
+      const p2=document.getElementById('ti').value;
+      console.log(p1);
+      const y=document.getElementById('a4').value;
+      var at=y+']'+p1+']'+p2;
+      console.log(at);
+      window.location.href=`http://localhost:7000/cancel?name=${at}`;
+  }
+
+  function nameop(e){
+    const t=document.getElementById('id').value;
+    console.log('opopo');
+    fetch('getname',{
+        method:'POST',
+        headers:{ 'Content-Type': 'application/json'},
+        body:JSON.stringify({id:t})
+        }).then(res=>res.json()).then(data=>{
+          console.log(data.rk);
+         document.getElementsByClassName('poil')[0].value=data.rk;
+          
+        })   
+        const u = document.getElementById("id").value;
+  
+    console.log('ppp');
+    fetch('from', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({ id: u })
+    }).then(res => res.json()).then(data => {
+      document.getElementById('from').value = data.id;
+    }) 
+  }
+
+  
+</script>
+
+</html>
