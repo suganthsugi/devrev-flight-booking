@@ -172,7 +172,7 @@ async function  change(e){
    function fix(){
     const r=document.getElementById('ok').innerText;
     const ab=document.getElementById('non').innerHTML;
-    if(r.localeCompare('')==0){
+    if(r.localeCompare(' ')==0){
        document.getElementById('dear').innerHTML='';
        document.getElementById('booking').style.display='none';
        document.getElementById('logout').style.display='none';
